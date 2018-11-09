@@ -17,6 +17,10 @@ class DetailsController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var desField: UITextView!
     
+    @IBOutlet weak var bleeding: UISegmentedControl!
+    @IBOutlet weak var growing: UISegmentedControl!
+    @IBOutlet weak var painful: UISegmentedControl!
+    
     @IBOutlet weak var diaLabel: UILabel!
     
     var close_up: UIImage?

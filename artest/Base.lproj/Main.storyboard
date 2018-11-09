@@ -232,11 +232,14 @@
                         <viewLayoutGuide key="safeArea" id="4yd-50-SpI"/>
                     </view>
                     <connections>
+                        <outlet property="bleeding" destination="Xlv-9i-2Rw" id="mH1-Gc-dOf"/>
                         <outlet property="closeup" destination="8Me-S3-F2a" id="zhr-7N-8w1"/>
                         <outlet property="dateField" destination="Dey-UM-Yfa" id="F6S-RU-fXW"/>
                         <outlet property="desField" destination="VeJ-Ad-byi" id="7CI-JB-Da4"/>
                         <outlet property="diaLabel" destination="exn-hQ-9hE" id="G2l-ky-v6O"/>
+                        <outlet property="growing" destination="Rla-Ip-FXV" id="xJz-Ju-dX8"/>
                         <outlet property="overview_view" destination="DzQ-qp-8ZD" id="LRJ-CO-mkY"/>
+                        <outlet property="painful" destination="VkP-ph-C8P" id="bQk-nu-q6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUw-G0-Xhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
