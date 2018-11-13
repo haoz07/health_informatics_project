@@ -99,7 +99,7 @@ class DetailsController: UIViewController, UITextViewDelegate {
         desField.layer.cornerRadius = 8.0
         desField.layer.masksToBounds = true
         desField.layer.borderWidth = 0.5
-        desField.layer.borderColor = UIColor.gray.cgColor
+        desField.layer.borderColor = UIColor.lightGray.cgColor
         desField.text = "Include information such as rashes in other locations, new medications, recent travel, and additional symptoms (fever, pain etc.). Providing more information will better help your provider make a diagnosis. "
         desField.textColor = UIColor.lightGray
         dateField.inputAccessoryView = toolbar

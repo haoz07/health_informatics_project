@@ -16,6 +16,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
     @IBOutlet weak var center: UIImageView!
+    @IBOutlet weak var startButton: UIButton!
     
     var box: Box!
     var status: String!
@@ -56,9 +57,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // update instruction
             // make shutter button visible
             if distance != 0.0 {
-                steps = "take close up of the rash by tapping the shutter button"
+                steps = "Make sure rash fills the frame. \n Tap the shutter button to take a close up of the rash"
                 shutterButton.isHidden = true
-                
+                sender.isHidden = true
             }
             shutterButton.isHidden = false
             mode = .waitingForMeasuring
@@ -94,13 +95,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func setStatusText() {
         var text = ""
         if status == "NOT READY" {
-            text += "Find a well lit area, move around the surface to initialize measuring"
+            text += "1. Find a well lit area. \n 2.Position phone directly above your rash \n 3.Move side to side to initialize measuring."
         }
         if status == "READY" && mode == .waitingForMeasuring {
-            text += "Move camera to edge of the rash and tap Start to begin measuring. \n"
+            
+            text += "Position cursor to the edge of the rash, and tap Start to begin measuring. \n"
+            // "take a second measurement that is perpendicular to the first measurement"
         }
         if mode == .measuring {
-            text += "Measure the diameter of the rash and tap Stop to finish \n"
+            text += "Measure the widest dimension of the rash, and tap Stop to finish \n"
             text += "Diameter: \(String(format:"%.2f cm", distance! * 100.0))"
         }
         if mode == .waitingForMeasuring && distance > 0.0 {
@@ -150,7 +153,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        statusTextView.layer.cornerRadius = 15.0
         
         // Set a padding in the text view
-        statusTextView.textContainerInset = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        // statusTextView.textContainerInset = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        statusTextView.textAlignment = .center
         
         // Instantiate the box and add it to the scene
         box = Box()
@@ -269,14 +273,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         impact.impactOccurred()
         if shotCount == 0 {
             shotCount += 1
-            box.removeFromParentNode()
+            box.isHidden = true
             closeup = sceneView.snapshot()
 //            shotCount += 1
 //            closeup = sceneView.snapshot()
 //            let alert = UIAlertController(title: "Close-up Shot Taken!",
 //                                          message: "Move camera further away to take an over shot", preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-            steps = "Take an overview of the rash"
+            steps = "Show us where the rash is \n Take an overview photo, with rash in the center"
             setStatusText()
         } else {
             shotCount += 1
@@ -291,6 +295,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             steps = "Tap details to continue"
             setStatusText()
         }
+    }
+    
+    @IBAction func resetButton(_ sender: Any) {
+        startButton.isHidden = false
+        continueButton.isHidden = true
+        mode = .waitingForMeasuring
+        box.isHidden = false
+        center.isHidden = false
+        distance = 0.0
+        measureCount = 1
+        mode = .waitingForMeasuring
+        setStatusText()
+        
+        
     }
     
     // pass images to next viewcontroller
