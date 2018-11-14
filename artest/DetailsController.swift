@@ -26,6 +26,7 @@ class DetailsController: UIViewController, UITextViewDelegate {
     var close_up: UIImage?
     var overview: UIImage?
     var diameter: Float?
+    var diameter2: Float?
     var diaString: String?
     
     lazy var datePicker: UIDatePicker = {

@@ -29,6 +29,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var measureCount: Int!
     var steps: String!
     
+    var diameterCount: Int!
+    var width_height: String!
+    var diameter1: Float!
+    var diameter2: Float!
+    
     // set up haptic feedback
     let impact = UIImpactFeedbackGenerator()
     
@@ -57,11 +62,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // update instruction
             // make shutter button visible
             if distance != 0.0 {
-                steps = "Make sure rash fills the frame. \n Tap the shutter button to take a close up of the rash"
-                shutterButton.isHidden = true
-                sender.isHidden = true
+                if diameterCount == 0 {
+                    diameterCount += 1
+                    diameter1 = distance
+                    steps = "Height \n Measure the tallest part of the rash \n Tap Start to measure"
+                } else {
+                    diameterCount += 1
+                    diameter2 = distance
+                    steps = "Make sure rash fills the frame. \n Tap the shutter button to take a close up of the rash"
+                    shutterButton.isHidden = true
+                    sender.isHidden = true
+                    shutterButton.isHidden = false
+                }
             }
-            shutterButton.isHidden = false
+
             mode = .waitingForMeasuring
             center.isHidden = false
             
@@ -95,20 +109,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func setStatusText() {
         var text = ""
         if status == "NOT READY" {
-            text += "1. Find a well lit area. \n 2.Position phone directly above your rash \n 3.Move side to side to initialize measuring."
+            text += "1. Find a well lit area. \n 2. Position phone directly above your rash \n 3. Move side to side to initialize measuring."
         }
         if status == "READY" && mode == .waitingForMeasuring {
             
-            text += "Position cursor to the edge of the rash, and tap Start to begin measuring. \n"
+            text += "Width \n Measure the widest part of the rash, and tap Start to begin measuring. \n"
             // "take a second measurement that is perpendicular to the first measurement"
         }
         if mode == .measuring {
-            text += "Measure the widest dimension of the rash, and tap Stop to finish \n"
-            text += "Diameter: \(String(format:"%.2f cm", distance! * 100.0))"
+            if diameterCount == 0 {
+                text += "Measure the widest part of the rash \n tap Stop to finish \n"
+            } else {
+                text += "Measure the tallest part of the rash \n tap Stop to finish \n"
+            }
+            text += "\(String(format:"%.2f cm", distance! * 100.0))"
         }
         if mode == .waitingForMeasuring && distance > 0.0 {
             text = steps
-            text += "\n Diameter: \(String(format:"%.2f cm", distance! * 100.0))"
+            if diameter1 != 0.0 {
+                text += "\n width: \(String(format:"%.2f cm", diameter1! * 100.0))"
+                if diameter2 != 0.0 {
+                    text += "  height: \(String(format:"%.2f cm", diameter2! * 100.0))"
+                }
+            }
+//            text += "\n Diameter: \(String(format:"%.2f cm", distance! * 100.0))"
         }
         
 //        var text = "Status: \(status!)\n"
@@ -188,6 +212,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // hide shutter button and continue button by default
         continueButton.isHidden = true
         shutterButton.isHidden = true
+        
+        diameterCount = 0
+        width_height = "widest"
+        diameter1 = 0.0
+        diameter2 = 0.0
     }
     
     
@@ -292,7 +321,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //                                          preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             continueButton.isHidden = false
-            steps = "Tap details to continue"
+            steps = "Tap Continue to fill up datails"
             setStatusText()
         }
     }
@@ -307,6 +336,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         measureCount = 1
         mode = .waitingForMeasuring
         setStatusText()
+        diameterCount = 0
+        diameter1 = 0.0
+        diameter2 = 0.0
         
         
     }
@@ -317,8 +349,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         if let destinationViewController = segue.destination as? DetailsController {
             destinationViewController.close_up = closeup
             destinationViewController.overview = overview
-            destinationViewController.diameter = distance
-            destinationViewController.diaString = "Diameter: \(String(format:"%.2f cm", distance! * 100.0))"
+            destinationViewController.diameter = diameter1
+            destinationViewController.diameter2 = diameter2
+            destinationViewController.diaString = "Size: \(String(format:"%.2f cm", diameter1! * 100.0)) x \(String(format:"%.2f cm", diameter2! * 100.0))"
         }
     }
 }
