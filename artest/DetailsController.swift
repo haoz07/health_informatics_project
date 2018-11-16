@@ -144,5 +144,41 @@ class DetailsController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @IBAction func saveRash(_ sender: Any) {
+//        guard let appDelegate =
+//            UIApplication.shared.delegate as? AppDelegate else {
+//                return
+//        }
+//
+//        let managedContext =
+//            appDelegate.persistentContainer.viewContext
+//
+//        let entity =
+//            NSEntityDescription.entity(forEntityName: "Rash",
+//                                       in: managedContext)!
+//
+//        let newRash = NSManagedObject(entity: entity,
+//                                     insertInto: managedContext)
+//
+//        newRash.setValue(dateField.text, forKeyPath: "dateField")
+//        newRash.setValue(desField.text, forKeyPath: "desField")
+//        newRash.setValue(close_up!.pngData(), forKeyPath: "closeup")
+//        newRash.setValue(overview!.pngData(), forKeyPath: "overview")
+//        newRash.setValue(diaString, forKeyPath: "size")
+        
+        let rash1 = RashLog(closeup: close_up!.pngData()!,
+                            overview: overview!.pngData()!,
+                            desField: desField.text,
+                            dateField: dateField.text!,
+                            size: diaString!)
+        
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+        TableViewController.insertData(rash: rash1)
 
+        performSegue(withIdentifier: "toSuccess", sender: self)
+    }
 }

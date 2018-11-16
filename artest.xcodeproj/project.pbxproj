@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B0244BAD21921E79009A96C0 /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0244BAC21921E79009A96C0 /* MainInterfaceController.swift */; };
 		B0244BB421932195009A96C0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0244BB221932195009A96C0 /* Model.xcdatamodeld */; };
+		B059BA9E219E5D1200292374 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059BA9D219E5D1200292374 /* TableViewController.swift */; };
+		B059BAA0219E5DD000292374 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059BA9F219E5DD000292374 /* TableCell.swift */; };
 		B0ADE3ED2174EEC00056B504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADE3EC2174EEC00056B504 /* AppDelegate.swift */; };
 		B0ADE3EF2174EEC00056B504 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADE3EE2174EEC00056B504 /* ViewController.swift */; };
 		B0ADE3F22174EEC00056B504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0ADE3F02174EEC00056B504 /* Main.storyboard */; };
@@ -19,6 +21,7 @@
 		B0ADE41B2176AA870056B504 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ADE41A2176AA870056B504 /* Box.swift */; };
 		B0B93FDF218E8F7400AE02F1 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B93FDE218E8F7400AE02F1 /* DetailsController.swift */; };
 		B0CA20492195FC2B00394960 /* RashLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CA20482195FC2B00394960 /* RashLog.swift */; };
+		B0ECF8E5219E69BE00F59195 /* LogDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ECF8E4219E69BE00F59195 /* LogDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,8 @@
 /* Begin PBXFileReference section */
 		B0244BAC21921E79009A96C0 /* MainInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterfaceController.swift; sourceTree = "<group>"; };
 		B0244BB321932195009A96C0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B059BA9D219E5D1200292374 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B059BA9F219E5DD000292374 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		B0ADE3E92174EEC00056B504 /* artest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0ADE3EC2174EEC00056B504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0ADE3EE2174EEC00056B504 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		B0ADE41A2176AA870056B504 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		B0B93FDE218E8F7400AE02F1 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		B0CA20482195FC2B00394960 /* RashLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RashLog.swift; sourceTree = "<group>"; };
+		B0ECF8E4219E69BE00F59195 /* LogDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +121,12 @@
 				B0ADE3F02174EEC00056B504 /* Main.storyboard */,
 				B0ADE3F32174EEC20056B504 /* Assets.xcassets */,
 				B0ADE3F52174EEC20056B504 /* LaunchScreen.storyboard */,
+				B059BA9F219E5DD000292374 /* TableCell.swift */,
 				B0ADE3F82174EEC20056B504 /* Info.plist */,
 				B0244BB221932195009A96C0 /* Model.xcdatamodeld */,
+				B0ECF8E4219E69BE00F59195 /* LogDetailsController.swift */,
 				B0244BAC21921E79009A96C0 /* MainInterfaceController.swift */,
+				B059BA9D219E5D1200292374 /* TableViewController.swift */,
 			);
 			path = artest;
 			sourceTree = "<group>";
@@ -271,9 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B059BAA0219E5DD000292374 /* TableCell.swift in Sources */,
 				B0244BAD21921E79009A96C0 /* MainInterfaceController.swift in Sources */,
 				B0B93FDF218E8F7400AE02F1 /* DetailsController.swift in Sources */,
+				B0ECF8E5219E69BE00F59195 /* LogDetailsController.swift in Sources */,
 				B0244BB421932195009A96C0 /* Model.xcdatamodeld in Sources */,
+				B059BA9E219E5D1200292374 /* TableViewController.swift in Sources */,
 				B0CA20492195FC2B00394960 /* RashLog.swift in Sources */,
 				B0ADE41B2176AA870056B504 /* Box.swift in Sources */,
 				B0ADE3EF2174EEC00056B504 /* ViewController.swift in Sources */,

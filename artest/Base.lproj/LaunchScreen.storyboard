@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-pl-5Sr">
-                                <rect key="frame" x="122" y="263" width="170" height="170"/>
+                                <rect key="frame" x="126" y="264" width="162" height="170"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oxh-pl-5Sr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="219" id="6KL-DT-Mgh"/>
-                            <constraint firstItem="oxh-pl-5Sr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="8E2-nv-8KD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oxh-pl-5Sr" secondAttribute="bottom" constant="429" id="O85-br-Ln1"/>
+                            <constraint firstItem="oxh-pl-5Sr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="6KL-DT-Mgh"/>
+                            <constraint firstItem="oxh-pl-5Sr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="8E2-nv-8KD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oxh-pl-5Sr" secondAttribute="bottom" constant="428" id="O85-br-Ln1"/>
                             <constraint firstItem="oxh-pl-5Sr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="PWz-m7-WLg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
