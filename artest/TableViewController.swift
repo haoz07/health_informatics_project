@@ -74,12 +74,12 @@ extension TableViewController {
     fileprivate func getLocalData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let managedObectContext = appDelegate.persistentContainer.viewContext
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Rash")
         
         do {
-            let fetchedResults = try managedObectContext.fetch(fetchRequest) as? [NSManagedObject]
+            let fetchedResults = try managedObjectContext.fetch(fetchRequest) as? [NSManagedObject]
             if let results = fetchedResults {
                 datas.removeAll()
                 for result in results {
@@ -98,9 +98,9 @@ extension TableViewController {
     
     fileprivate func initData() {
         let data1 = UIImage(named: "sample_hand copy 2")?.pngData()
-        let user1 = RashLog(closeup: data1!, overview: data1!, desField: "Test Rash", dateField: "Jan 1, 2018", size: "Size: 0 cm x 0 cm")
+        let user1 = RashLog(closeup: data1!, overview: data1!, desField: "Test Rash", dateField: "Jan 1, 2018", size: "Size: 0 cm x 0 cm", painful: false, bleeding: false, growing: false)
         
-        let user2 = RashLog(closeup: data1!, overview: data1!, desField: "Test Rash", dateField: "Jan 1, 2018", size: "Size: 0 cm x 0 cm")
+        let user2 = RashLog(closeup: data1!, overview: data1!, desField: "Test Rash", dateField: "Jan 1, 2018", size: "Size: 0 cm x 0 cm", painful: false, bleeding: false, growing: false)
         
         TableViewController.insertData(rash: user1)
         TableViewController.insertData(rash: user2)
@@ -114,11 +114,11 @@ extension TableViewController {
         // get delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let managedObectContext = appDelegate.persistentContainer.viewContext
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
         
         //
-        let entity = NSEntityDescription.entity(forEntityName: "Rash", in: managedObectContext)
-        let user = NSManagedObject(entity: entity!, insertInto: managedObectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Rash", in: managedObjectContext)
+        let user = NSManagedObject(entity: entity!, insertInto: managedObjectContext)
         
         //
         
@@ -127,11 +127,15 @@ extension TableViewController {
         user.setValue(rash.dateField, forKey: "dateField")
         user.setValue(rash.desField, forKey: "desField")
         user.setValue(rash.size, forKey: "size")
+        user.setValue(rash.painful, forKey: "painful")
+        user.setValue(rash.growing, forKey: "growing")
+        user.setValue(rash.bleeding, forKey: "bleeding")
+        
         
         
         //
         do {
-            try managedObectContext.save()
+            try managedObjectContext.save()
         } catch  {
             fatalError("Unable to save")
         }
@@ -143,9 +147,13 @@ extension TableViewController {
             let closeup = from.value(forKey: "closeup") as? Data,
             let desField = from.value(forKey: "desField") as? String,
             let dateField = from.value(forKey: "dateField") as? String,
-            let size = from.value(forKey: "size") as? String
+            let size = from.value(forKey: "size") as? String,
+            let bleeding = from.value(forKey: "bleeding") as? Bool,
+            let painful = from.value(forKey: "painful") as? Bool,
+            let growing = from.value(forKey: "growing") as? Bool
+            
         {
-            let rashlog = RashLog(closeup: closeup, overview: overview, desField: desField, dateField: dateField, size: size)
+            let rashlog = RashLog(closeup: closeup, overview: overview, desField: desField, dateField: dateField, size: size, painful: painful, bleeding: bleeding, growing: growing)
 //            print("It works")
             return rashlog
         }

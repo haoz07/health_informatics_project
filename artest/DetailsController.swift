@@ -165,12 +165,31 @@ class DetailsController: UIViewController, UITextViewDelegate {
 //        newRash.setValue(close_up!.pngData(), forKeyPath: "closeup")
 //        newRash.setValue(overview!.pngData(), forKeyPath: "overview")
 //        newRash.setValue(diaString, forKeyPath: "size")
+        var bleedingBool = false
+        var painfulBool = false
+        var growingBool = false
+        
+        if bleeding.selectedSegmentIndex == 0 {
+            bleedingBool = true
+        }
+        
+        if painful.selectedSegmentIndex == 0 {
+            painfulBool = true
+        }
+        
+        if growing.selectedSegmentIndex == 0 {
+            growingBool = true
+        }
+        
         
         let rash1 = RashLog(closeup: close_up!.pngData()!,
                             overview: overview!.pngData()!,
                             desField: desField.text,
-                            dateField: dateField.text!,
-                            size: diaString!)
+                            dateField: dateField.text ?? "Unknown Date",
+                            size: diaString!,
+                            painful: painfulBool,
+                            bleeding: bleedingBool,
+                            growing: growingBool)
         
 //        do {
 //            try managedContext.save()

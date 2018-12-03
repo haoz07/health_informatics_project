@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-struct RashLog {
-    var close_up: UIImage
-    var overview: UIImage
-    var diameter: Float
-    var description: String
-    var growing: Bool
-    var bleeding: Bool
+struct RashLog: Codable {
+    var closeup: Data
+    var overview: Data
+    var desField: String
+    var dateField: String
+    var size: String
     var painful: Bool
+    var bleeding: Bool
+    var growing: Bool
 }
